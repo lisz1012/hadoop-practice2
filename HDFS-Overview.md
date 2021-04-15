@@ -6,7 +6,7 @@
 2. DataNode （DN）- Stores Data blocks and send the heartbeat and block info to namenode
 3. Client - Connects to namenode, transfer the the metadata of a file and get the target datanode to read files from or upload files to. Connects to datanodes and actually upload/download the files.
 
-![Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled.png)
+![HDFS-Overview-Images/Untitled.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled.png)
 
 HDFS's Master/Slave architect
 
@@ -14,11 +14,11 @@ HDFS's Master/Slave architect
 
 HDFS stores file in blocks(128M by default), and each block has several replicas located in different datanodes.
 
-![Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%201.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%201.png)
+![HDFS-Overview-Images/Untitled%201.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%201.png)
 
 Replica placement policy:
 
-![Overview%205b921a70de7b43acaa65ee9c3db91efb/hdfs-block-placement.jpg](Overview%205b921a70de7b43acaa65ee9c3db91efb/hdfs-block-placement.jpg)
+![HDFS-Overview-Images/hdfs-block-placement.jpg](Overview%205b921a70de7b43acaa65ee9c3db91efb/hdfs-block-placement.jpg)
 
 When a new block is created, HDFS places the first replica on the node where the writer is located. The second and the third replicas are placed on two different nodes in a different rack. The rest are placed on random nodes with restrictions that no more than one replica is placed at any one node and no more than two replicas are placed in the same rack, if possible.
 
@@ -26,11 +26,11 @@ When a new block is created, HDFS places the first replica on the node where the
 
 Name Node `FsImage` as a snapshot for the metadata at a certain time point, and `EditLog` to record the incremental edits on top of the `FsImage` . If there is a secondary name node in the cluster, it pulls the `FsImage` and `EditsLog` from the name node and merge the edits to the `FsImage` file and create a new one and then pushes it back to the name node. This task can be scheduled and happen periodically (every 3600s or the log file is larger than 64M by default) to guarantee the metadata is always available and save the CPU and memory of the name node.
 
-![Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%202.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%202.png)
+![HDFS-Overview-Images/Untitled%202.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%202.png)
 
 ## File Uploading
 
-![Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%203.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%203.png)
+![HDFS-Overview-Images/Untitled%203.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%203.png)
 
 1. Clients connects to the NN and creates the metadata of the file
 2. NN validates the metadata (File in the same path may already exist, or user has no permission to write into HDFS)
@@ -45,7 +45,7 @@ Name Node `FsImage` as a snapshot for the metadata at a certain time point, and 
 
 ## File Downloading
 
-![Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%204.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%204.png)
+![HDFS-Overview-Images/Untitled%204.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%204.png)
 
 To lower the latency, HDFS will let the client read the file from the closest DN to it.
 
