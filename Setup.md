@@ -46,8 +46,10 @@
 #### Host - IP Mappings
 `vi /etc/hosts`
 ```
-    192.168.150.11 node01
-    192.168.150.12 node02
+    192.168.1.6     hadoop-01
+    192.168.1.7     hadoop-02
+    192.168.1.8     hadoop-03
+    192.168.1.9     hadoop-04
 ```
 #### Turn off the firewall
 execute the command:  
@@ -151,6 +153,14 @@ If host A would like to ssh to B without inputing the password, it needs to add 
   hadoop-04 
 ```
 
+### Copy The Settings and Files to Other Nodes
+1. OS
+2. JDK
+3. Hadoop
+4. ssh
+5. Network
+6. Hadoop xml files
+
 ### Format
 `hdfs namenode -format`  
 HDFS will create directories and initialize a fsimage	
@@ -159,7 +169,7 @@ HDFS will create directories and initialize a fsimage
 `start-dfs.sh`  
 Namenode and datanodes will initialize the directories and files
 		
-View http://node01:50070 to verify if the HDFS is started successfully.
+View http://hadoop-01:50070 to verify if the HDFS is started successfully.
 
 ## Simple Commands
 ```
