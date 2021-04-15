@@ -27,7 +27,7 @@
         <name>dfs.datanode.data.dir</name>
         <value>/var/bigdata/hadoop/ha/dfs/data</value>
     </property>
-    <!-- 一对多，逻辑到物理节点的映射 -->
+    <!-- 一one to many, cluster name to the namenodes and their IP addresses -->
     <property>
         <name>dfs.nameservices</name>
         <value>mycluster</value>
@@ -52,7 +52,7 @@
         <name>dfs.namenode.http-address.mycluster.nn2</name>
         <value>hadoop-02:50070</value>
     </property>
-    <!-- JN在哪里启动，数据存那个磁盘 -->
+    <!-- On which nodes we start the JN processes and the path to save the logs -->
     <property>
         <name>dfs.namenode.shared.edits.dir</name>
         <value>qjournal://hadoop-01:8485;hadoop-02:8485;hadoop-03:8485/mycluster</value>
@@ -61,7 +61,7 @@
         <name>dfs.journalnode.edits.dir</name>
         <value>/var/bigdata/hadoop/ha/dfs/jn</value>
     </property>
-    <!-- HA角色切换的代理类和实现方法，我们用的ssh免密 -->
+    <!-- ssh condif for ZKFC to access the other NN -->
     <property>
         <name>dfs.client.failover.proxy.provider.mycluster</name>
         <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
@@ -74,7 +74,7 @@
         <name>dfs.ha.fencing.ssh.private-key-files</name>
         <value>/home/god/.ssh/id_dsa</value>
     </property>
-    <!-- 开启自动化： 启动zkfc -->
+    <!-- auto start zkfc when starting HDFS -->
     <property>
         <name>dfs.ha.automatic-failover.enabled</name>
         <value>true</value>

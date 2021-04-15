@@ -18,7 +18,6 @@
     <property>
         <name>fs.defaultFS</name>
         <!--<value>hdfs://hadoop-01:9000</value>-->
-        <!-- 命令或脚本去哪儿、以什么端口来启动一个name node. 告知dn和客户端，nn进程在哪台主机的哪个端口。localhost尽量不要用，直接写死主机名 -->
         <value>hdfs://mycluster</value>
     </property>
     <property>
