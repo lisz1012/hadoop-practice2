@@ -24,7 +24,7 @@ When a new block is created, HDFS places the first replica on the node where the
 
 ## MetaData Persistence
 
-Name Node `FsImage` as a snapshot for the metadata (file owner, dates, permission etc, except the block locations) at a certain time point, and `EditLog` to record the incremental edits on top of the `FsImage` . If there is a secondary name node in the cluster, it pulls the `FsImage` and `EditLog` from the name node and merge the edits to the `FsImage` file and create a new one and then pushes it back to the name node. This task can be scheduled and happen periodically (every 3600s or the log file is larger than 64M by default) to guarantee the metadata is always available and save the CPU and memory of the name node.
+Name Node `FsImage` as a snapshot for the metadata (file owner, dates, permission etc, except the block locations, which are initially reported by the data nodes in safe mode while starting the cluster) at a certain time point, and `EditLog` to record the incremental edits on top of the `FsImage` . If there is a secondary name node in the cluster, it pulls the `FsImage` and `EditLog` from the name node and merge the edits to the `FsImage` file and create a new one and then pushes it back to the name node. This task can be scheduled and happen periodically (every 3600s or the log file is larger than 64M by default) to guarantee the metadata is always available and save the CPU and memory of the name node.
 
 ![HDFS-Overview-Images/Untitled%202.png](HDFS-Overview-Images/Untitled%202.png)
 
@@ -53,7 +53,7 @@ To lower the latency, HDFS will let the client read the file from the closest DN
 2. NN will sort the location list by distance to the client
 3. Client tries to download and validates the file by the checksums
 
-`**Downloading` a file means the client can get all blocks of the file, so it can definitely get a subset of them, in other words, read the file from a specified offset (seek) with some length. This capability actually supports the computation layer to process the data in parallel.**
+`Downloading` a file means the client can get all blocks of the file, so it can definitely get a subset of them, in other words, read the file from a specified offset (seek) with some length. This capability actually supports the computation layer to process the data in parallel.
 
 ### Reference:  
 https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf  
