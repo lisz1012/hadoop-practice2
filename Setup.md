@@ -125,9 +125,10 @@ If host A would like to ssh to B without inputing the password, it needs to add 
 ```
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://node01:9000</value>
+        <value>hdfs://hadoop-01:9000</value>
     </property>
 ```
+
 `vi hdfs-site.xml`  
 ```
         <property>
@@ -142,14 +143,6 @@ If host A would like to ssh to B without inputing the password, it needs to add 
             <name>dfs.datanode.data.dir</name>
             <value>/var/bigdata/hadoop/local/dfs/data</value>
         </property>
-        <property>
-            <name>dfs.namenode.secondary.http-address</name>
-            <value>node01:50090</value>
-        </property>
-        <property>
-            <name>dfs.namenode.checkpoint.dir</name>
-            <value>/var/bigdata/hadoop/local/dfs/secondary</value>
-        </property>
 ```
 
 ### IP of Data Nodes
@@ -159,41 +152,19 @@ If host A would like to ssh to B without inputing the password, it needs to add 
   hadoop-03
   hadoop-04 
 ```
-3,初始化&启动：
-	hdfs namenode -format  
-		创建目录
-		并初始化一个空的fsimage
-		VERSION
-			CID
-	
-	start-dfs.sh
-		第一次：datanode和secondary角色会初始化创建自己的数据目录
-		
-	http://node01:50070
-		修改windows： C:\Windows\System32\drivers\etc\hosts
-			192.168.150.11 node01
-			192.168.150.12 node02
-			192.168.150.13 node03
-			192.168.150.14 node04
 
-4，简单使用：
+### Format
+`hdfs namenode -format`  
+HDFS will create directories and initialize a fsimage	
+
+### Start HDFS	
+`start-dfs.sh`  
+Namenode and datanodes will initialize the directories and files
+		
+View http://node01:50070 to verify if the HDFS is started successfully.
+
+### Simple Commands
+```
 	hdfs dfs -mkdir /bigdata
 	hdfs dfs -mkdir  -p  /user/root
-
-
-
-5,验证知识点：
-	cd   /var/bigdata/hadoop/local/dfs/name/current
-		观察 editlog的id是不是再fsimage的后边
-	cd /var/bigdata/hadoop/local/dfs/secondary/current
-		SNN 只需要从NN拷贝最后时点的FSimage和增量的Editlog
-
-
-	hdfs dfs -put hadoop*.tar.gz  /user/root
-	cd  /var/bigdata/hadoop/local/dfs/data/current/BP-281147636-192.168.150.11-1560691854170/current/finalized/subdir0/subdir0
-		
-
-	for i in `seq 100000`;do  echo "hello hadoop $i"  >>  data.txt  ;done
-	hdfs dfs -D dfs.blocksize=1048576  -put  data.txt 
-	cd  /var/bigdata/hadoop/local/dfs/data/current/BP-281147636-192.168.150.11-1560691854170/current/finalized/subdir0/subdir0
-	检查data.txt被切割的块，他们数据什么样子
+```
