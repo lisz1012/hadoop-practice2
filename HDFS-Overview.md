@@ -24,7 +24,7 @@ When a new block is created, HDFS places the first replica on the node where the
 
 ## MetaData Persistence
 
-Name Node `FsImage` as a snapshot for the metadata at a certain time point, and `EditLog` to record the incremental edits on top of the `FsImage` . If there is a secondary name node in the cluster, it pulls the `FsImage` and `EditsLog` from the name node and merge the edits to the `FsImage` file and create a new one and then pushes it back to the name node. This task can be scheduled and happen periodically (every 3600s or the log file is larger than 64M by default) to guarantee the metadata is always available and save the CPU and memory of the name node.
+Name Node `FsImage` as a snapshot for the metadata at a certain time point, and `EditLog` to record the incremental edits on top of the `FsImage` . If there is a secondary name node in the cluster, it pulls the `FsImage` and `EditLog` from the name node and merge the edits to the `FsImage` file and create a new one and then pushes it back to the name node. This task can be scheduled and happen periodically (every 3600s or the log file is larger than 64M by default) to guarantee the metadata is always available and save the CPU and memory of the name node.
 
 ![HDFS-Overview-Images/Untitled%202.png](HDFS-Overview-Images/Untitled%202.png)
 
