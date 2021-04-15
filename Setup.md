@@ -6,61 +6,69 @@ centos 6.5
 jdk 1.8 
 hadoop 2.6.5 (https://hadoop.apache.org/releases.html)  
 
-Prerequisite：
-	Network：
-	IP
+## Prerequisite：
+	
+### Network：
+
+#### IP
 		
-	`vi /etc/sysconfig/network-scripts/ifcfg-ens-33`
-		```
-		DEVICE=ens-33
-		#HWADDR=00:0C:29:42:15:C2
-		TYPE=Ethernet
-		ONBOOT=yes
-		NM_CONTROLLED=yes
-		BOOTPROTO=static
-		IPADDR=192.168.1.6
-		NETMASK=255.255.255.0
-		GATEWAY=192.168.150.2
-		DNS1=223.5.5.5
-		DNS2=114.114.114.114
-		```
-	Host name:
-	`vi /etc/sysconfig/network`
-	```
-		NETWORKING=yes
-		HOSTNAME=hadoop-01
-	```	
-	设置本机的ip到主机名的映射关系  
-	`vi /etc/hosts`
-	```
-		192.168.150.11 node01
-		192.168.150.12 node02
-	```
-	Turn off the firewall, execute the command:
-	`service iptables stop`  
-	`chkconfig iptables off`
-	Turn off selinux
-	`vi /etc/selinux/config`  
-		`SELINUX=disabled`
+`vi /etc/sysconfig/network-scripts/ifcfg-ens-33`
+    ```
+    DEVICE=ens-33
+    #HWADDR=00:0C:29:42:15:C2
+    TYPE=Ethernet
+    ONBOOT=yes
+    NM_CONTROLLED=yes
+    BOOTPROTO=static
+    IPADDR=192.168.1.6
+    NETMASK=255.255.255.0
+    GATEWAY=192.168.150.2
+    DNS1=223.5.5.5
+    DNS2=114.114.114.114
+    ```
+#### Host name:
+`vi /etc/sysconfig/network`
+
+```
+    NETWORKING=yes
+    HOSTNAME=hadoop-01
+```
 	
-	Sync the time:  
-	`yum install ntp  -y`
-	(Optional) `vi /etc/ntp.conf`
-	```
-		server ntp1.aliyun.com
-	```	
-	`service ntpd start`  
-	`chkconfig ntpd on`
+#### Host - IP Mappings
+`vi /etc/hosts`
+```
+    192.168.150.11 node01
+    192.168.150.12 node02
+```
+#### Turn off the firewall
+execute the command:  
+`service iptables stop`  
+`chkconfig iptables off`
+
+#### Turn off selinux
+`vi /etc/selinux/config`  
+    `SELINUX=disabled`
 	
-	Install JDK：
-	`rpm -i   jdk-8u181-linux-x64.rpm`  	
-	`vi /etc/profile`
-	```     
-		export  JAVA_HOME=/usr/java/default
-		export PATH=$PATH:$JAVA_HOME/bin
-	```	
-	`source /etc/profile`
- 
+#### Sync the time:  
+`yum install ntp  -y`
+
+(Optional) `vi /etc/ntp.conf`
+    ```
+       server ntp1.aliyun.com
+    ```	
+`service ntpd start`    
+`chkconfig ntpd on`  
+	
+#### Install JDK
+
+`rpm -i   jdk-8u181-linux-x64.rpm`  	
+`vi /etc/profile`  
+    ```     
+        export  JAVA_HOME=/usr/java/default
+        export PATH=$PATH:$JAVA_HOME/bin
+    ```	
+`source /etc/profile`  
+
 	Setup passphraseless ssh： 
 		`ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa`  
 		`cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys`
