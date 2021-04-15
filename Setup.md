@@ -8,9 +8,7 @@
 
 ## Prerequisite：
 	
-### Network：
-
-#### IP
+#### LAN IP
 		
 `vi /etc/sysconfig/network-scripts/ifcfg-ens-33`  
 
@@ -157,13 +155,13 @@ If host A would like to ssh to B without inputing the password, it needs to add 
 `hdfs namenode -format`  
 HDFS will create directories and initialize a fsimage	
 
-### Start HDFS	
+## Start HDFS	
 `start-dfs.sh`  
 Namenode and datanodes will initialize the directories and files
 		
 View http://node01:50070 to verify if the HDFS is started successfully.
 
-### Simple Commands
+## Simple Commands
 ```
 	hdfs dfs -mkdir /bigdata
 	hdfs dfs -mkdir  -p  /user/root
