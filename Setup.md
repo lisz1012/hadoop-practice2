@@ -2,9 +2,9 @@
 
 ## Operating System and Software
 
-centos 6.5
-jdk 1.8 
-hadoop 2.6.5 (https://hadoop.apache.org/releases.html)  
+1. centos 7
+2. jdk 1.8 
+3. hadoop 2.6.5 (https://hadoop.apache.org/releases.html)  
 
 ## Prerequisite：
 	
@@ -12,8 +12,9 @@ hadoop 2.6.5 (https://hadoop.apache.org/releases.html)
 
 #### IP
 		
-`vi /etc/sysconfig/network-scripts/ifcfg-ens-33`
-    ```
+`vi /etc/sysconfig/network-scripts/ifcfg-ens-33`  
+
+```
     DEVICE=ens-33
     #HWADDR=00:0C:29:42:15:C2
     TYPE=Ethernet
@@ -25,7 +26,7 @@ hadoop 2.6.5 (https://hadoop.apache.org/releases.html)
     GATEWAY=192.168.150.2
     DNS1=223.5.5.5
     DNS2=114.114.114.114
-    ```
+```
 #### Host name:
 `vi /etc/sysconfig/network`
 
@@ -52,33 +53,39 @@ execute the command:
 #### Sync the time:  
 `yum install ntp  -y`
 
-(Optional) `vi /etc/ntp.conf`
-    ```
-       server ntp1.aliyun.com
-    ```	
+(Optional) `vi /etc/ntp.conf`  
+```
+   server ntp1.aliyun.com
+```	
 `service ntpd start`    
 `chkconfig ntpd on`  
-	
+
 #### Install JDK
 
 `rpm -i   jdk-8u181-linux-x64.rpm`  	
 `vi /etc/profile`  
-    ```     
-        export  JAVA_HOME=/usr/java/default
-        export PATH=$PATH:$JAVA_HOME/bin
-    ```	
+```     
+    export  JAVA_HOME=/usr/java/default
+    export PATH=$PATH:$JAVA_HOME/bin
+```	
+
 `source /etc/profile`  
 
-	Setup passphraseless ssh： 
-		`ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa`  
-		`cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys`
-		If host A would like to ssh to B without inputing the password, it needs to add its own public key to the authorized_keys file on host B
-			A：
-				ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
-				cd ~/.ssh
-				scp id_dsa.pub hadoop-02:/root/.ssh
-			B：
-				cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+#### Setup passphraseless ssh： 
+
+`ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa`  
+  
+`cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys`  
+
+```
+If host A would like to ssh to B without inputing the password, it needs to add its own public key to the authorized_keys file on host B
+    A：
+        ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+        cd ~/.ssh
+        scp id_dsa.pub hadoop-02:/root/.ssh
+    B：
+        cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+```
 2，Hadoop的配置（应用的搭建过程）
 	规划路径：
 	mkdir /opt/bigdata
