@@ -179,11 +179,9 @@ View http://hadoop-01:50070 to verify if the HDFS is started successfully.
 ```
 
 ## Role Distribution of HA with Yarn
-```
-            		   NN	NN	JN	ZKFC	ZK	 DN	  RM	NM
-    		node01	    *		*	 *
-    		node02		    *	*	 *	    *	 *		    *
-    		node03				*	 	    *	 *    *	    *
-    		node04					 	    *	 *    *     *
-
-```
+|           |   NN  |   JN   |  ZKFC  |   ZK   |   DN  |   RM   |   NM  |
+|  ----     | ----  |  ----  |  ----  |  ----  |  ---- |  ----  | ----  |
+| hadoop-01 |   *   |   *    |   *    |        |       |        |       |
+| hadoop-02 |   *   |   *    |   *    |    *   |   *   |        |   *   |
+| hadoop-03 |       |   *    |        |    *   |   *   |   *    |   *   |
+| hadoop-04 |       |        |        |    *   |   *   |   *    |   *   |
