@@ -177,3 +177,13 @@ View http://hadoop-01:50070 to verify if the HDFS is started successfully.
 	hdfs dfs -mkdir /bigdata
 	hdfs dfs -mkdir  -p  /user/root
 ```
+
+## Role Distribution of HA with Yarn
+```
+            		   NN	NN	JN	ZKFC	ZK	 DN	  RM	NM
+    		node01	    *		*	 *
+    		node02		    *	*	 *	    *	 *		    *
+    		node03				*	 	    *	 *    *	    *
+    		node04					 	    *	 *    *     *
+
+```
