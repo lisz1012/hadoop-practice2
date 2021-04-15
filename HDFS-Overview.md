@@ -6,7 +6,7 @@
 2. DataNode （DN）- Stores Data blocks and send the heartbeat and block info to namenode
 3. Client - Connects to namenode, transfer the the metadata of a file and get the target datanode to read files from or upload files to. Connects to datanodes and actually upload/download the files.
 
-![HDFS-Overview-Images/Untitled.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled.png)
+![HDFS-Overview-Images/Untitled.png](HDFS-Overview-Images/Untitled.png)
 
 HDFS's Master/Slave architect
 
@@ -14,11 +14,11 @@ HDFS's Master/Slave architect
 
 HDFS stores file in blocks(128M by default), and each block has several replicas located in different datanodes.
 
-![HDFS-Overview-Images/Untitled%201.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%201.png)
+![HDFS-Overview-Images/Untitled%201.png](HDFS-Overview-Images/Untitled%201.png)
 
 Replica placement policy:
 
-![HDFS-Overview-Images/hdfs-block-placement.jpg](Overview%205b921a70de7b43acaa65ee9c3db91efb/hdfs-block-placement.jpg)
+![HDFS-Overview-Images/hdfs-block-placement.jpg](HDFS-Overview-Images/hdfs-block-placement.jpg)
 
 When a new block is created, HDFS places the first replica on the node where the writer is located. The second and the third replicas are placed on two different nodes in a different rack. The rest are placed on random nodes with restrictions that no more than one replica is placed at any one node and no more than two replicas are placed in the same rack, if possible.
 
