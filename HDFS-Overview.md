@@ -54,3 +54,7 @@ To lower the latency, HDFS will let the client read the file from the closest DN
 3. Client tries to download and validates the file by the checksums
 
 `**Downloading` a file means the client can get all blocks of the file, so it can definitely get a subset of them, in other words, read the file from a specified offset (seek) with some length. This capability actually supports the computation layer to process the data in parallel.**
+
+Reference:  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-project-dist/hadoop-common/ClusterSetup.html

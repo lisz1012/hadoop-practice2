@@ -29,3 +29,10 @@ This architecture enables the entire hadoop cluster to have a new active NN in a
 3. ZKFC on the standby NN tries to verify if the active NN is really dead, if so, downgrade it to standby and upgrade the current node to active NN.
 4. Engineers are noticed to repair/restart the previous active NN.
 5. The previous active NN will not become active as long as the current active one is down and its ephemeral node is deleted from ZK
+
+Reference:  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-project-dist/hadoop-common/ClusterSetup.html  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-project-dist/hadoop-common/core-default.xml  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml  
+https://hadoop.apache.org/docs/r2.6.5/hadoop-yarn/hadoop-yarn-common/yarn-default.xml
