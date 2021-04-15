@@ -1,4 +1,4 @@
-# Hadoop Setup：
+# Hadoop Setup
 
 ## Operating System and Software
 
@@ -35,7 +35,7 @@
    NETMASK="255.255.255.0"
    DNS1=192.168.1.1 
 ```
-#### Host name:
+#### Host Name
 `vi /etc/sysconfig/network`
 
 ```
@@ -51,16 +51,16 @@
     192.168.1.8     hadoop-03
     192.168.1.9     hadoop-04
 ```
-#### Turn off the firewall
+#### Turn Off the Firewall
 execute the command:  
 `service iptables stop`  
 `chkconfig iptables off`
 
-#### Turn off selinux
+#### Turn off Selinux
 `vi /etc/selinux/config`  
     `SELINUX=disabled`
 	
-#### Sync the time:  
+#### Sync the Time:  
 `yum install ntp  -y`
 
 (Optional) `vi /etc/ntp.conf`  
@@ -96,6 +96,7 @@ If host A would like to ssh to B without inputing the password, it needs to add 
     B：
         cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
 ```
+Note: The name node should also set the passphraseless ssh to itself.  
 
 ## Hadoop Setup
 
@@ -108,7 +109,7 @@ If host A would like to ssh to B without inputing the password, it needs to add 
 
 `vi /etc/profile`  	
 ```
-    export  JAVA_HOME=/usr/java/default
+    export JAVA_HOME=/usr/java/default
     export HADOOP_HOME=/opt/bigdata/hadoop-2.6.5
     export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 ```
