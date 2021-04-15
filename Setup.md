@@ -2,8 +2,8 @@
 
 ## Operating System and Software
 
-1. centos 7
-2. jdk 1.8 
+1. centos 7 (https://www.centos.org/download/)
+2. jdk 1.8 (https://www.oracle.com/java/technologies/javase-downloads.html)  
 3. hadoop 2.6.5 (https://hadoop.apache.org/releases.html)  
 
 ## Prerequisite：
