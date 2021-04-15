@@ -41,7 +41,7 @@ Name Node `FsImage` as a snapshot for the metadata at a certain time point, and 
 7. Client puts the packet into a data queue and send it to the selected DN
 8. The selected DN saves the packet and sends it to the next DN, which will also send the packet to the third one etc (depends on the number of replicas)
 9. Meanwhile, the client sends the following packets to the selected DN without knowing that all DNs have saved the packet successfully.
-10. Once the transition of a block is completed, each of the DN will ack to the NN, and at the same time, client uploads the next block
+10. Once the transition of a block is completed, each of the DN will ack to the NN, and at the same time, client uploads the next block at the same time.
 
 ## File Downloading
 
