@@ -26,11 +26,11 @@ When a new block is created, HDFS places the first replica on the node where the
 
 Name Node `FsImage` as a snapshot for the metadata at a certain time point, and `EditLog` to record the incremental edits on top of the `FsImage` . If there is a secondary name node in the cluster, it pulls the `FsImage` and `EditsLog` from the name node and merge the edits to the `FsImage` file and create a new one and then pushes it back to the name node. This task can be scheduled and happen periodically (every 3600s or the log file is larger than 64M by default) to guarantee the metadata is always available and save the CPU and memory of the name node.
 
-![HDFS-Overview-Images/Untitled%202.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%202.png)
+![HDFS-Overview-Images/Untitled%202.png](HDFS-Overview-Images/Untitled%202.png)
 
 ## File Uploading
 
-![HDFS-Overview-Images/Untitled%203.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%203.png)
+![HDFS-Overview-Images/Untitled%203.png](HDFS-Overview-Images/Untitled%203.png)
 
 1. Clients connects to the NN and creates the metadata of the file
 2. NN validates the metadata (File in the same path may already exist, or user has no permission to write into HDFS)
@@ -45,7 +45,7 @@ Name Node `FsImage` as a snapshot for the metadata at a certain time point, and 
 
 ## File Downloading
 
-![HDFS-Overview-Images/Untitled%204.png](Overview%205b921a70de7b43acaa65ee9c3db91efb/Untitled%204.png)
+![HDFS-Overview-Images/Untitled%204.png](HDFS-Overview-Images/Untitled%204.png)
 
 To lower the latency, HDFS will let the client read the file from the closest DN to it.
 
