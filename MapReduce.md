@@ -61,7 +61,7 @@ High Level MapReduce：
 
 ![MapReduce%20b9b6c62d3ed44e068ef95871c8b7410f/Untitled.png](MapReduce%20b9b6c62d3ed44e068ef95871c8b7410f/Untitled.png)
 
-# of split : # of map task = 1:1.  # of reducers can be configured. Dashed Rectangles are map/reduce **tasks**, while solid blue ones are map/reduce **methods**. A reduce task is also called a "partition"
+Number of split : number of map task = 1:1. The number of reducers can be configured. Dashed Rectangles are map/reduce **tasks**, while solid blue ones are map/reduce **methods**. A reduce task is also called a "partition"
 
 ```java
 block : split
