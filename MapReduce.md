@@ -65,16 +65,16 @@ Number of split : number of map task = 1:1. The number of reducers can be config
 
 ```java
     block : split
-		 1:1
-		 N:1
-		 1:N
+         1:1
+         N:1
+         1:N
     split : map
-		 1:1
-	  map : reduce
-		 N:1
-		 N:N
-		 1:1
-		 1:N
+         1:1
+      map : reduce
+         N:1
+         N:N
+         1:1
+         1:N
 ```
 
 1 Map and 1 Reduce：
