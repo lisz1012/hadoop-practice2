@@ -38,7 +38,7 @@ public class MyWorldCount {
 		job.setMapOutputKeyClass(Text.class);  // Reflect
 		job.setMapOutputValueClass(IntWritable.class);
 		job.setReducerClass(MyReducer.class);
-		//job.setNumReduceTasks(5);  // Set number of reduce tasks
+		//job.setNumReduceTasks(2);  // Set number of reduce tasks
 		job.waitForCompletion(true);
 	}
 }
