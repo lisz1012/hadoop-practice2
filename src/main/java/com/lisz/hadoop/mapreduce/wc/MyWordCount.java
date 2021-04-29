@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 // hadoop jar hadoop-mapreduce-examples-2.10.0.jar wordcount /data/wc/input /data/wc/output
-public class MyWorldCount {
+public class MyWordCount {
 	public static void main(String[] args) throws Exception{
 		// load the xml files in resources
 		Configuration conf = new Configuration(true);
@@ -25,7 +25,7 @@ public class MyWorldCount {
 		// Upload this jar file
 		//job.setJar("/Users/shuzheng/IdeaProjects/hadoop-hdfs/target/hadoop-hdfs-1.0-SNAPSHOT.jar");
 		// Main class
-		job.setJarByClass(MyWorldCount.class);
+		job.setJarByClass(MyWordCount.class);
 		job.setJobName("myJob");
 		Path infile = new Path(otherArgs[0]);
 		TextInputFormat.addInputPath(job, infile);
