@@ -74,7 +74,7 @@ Number of split : number of map task = 1:1. The number of reducers can be config
          N:1
          N:N
          1:1
-         1:N
+         1:N  (NOT Allowed)
 ```
 
 1 Map and 1 Reduce：
