@@ -16,6 +16,8 @@ managements of resource and task are decoupled from each other.
 
 ## Roles
 
+![Yarn-Images/yarn_architecture.gif](Yarn-Images/yarn_architecture.gif)
+
 ### Client
 The client is process started in the "main" method of the jar, which also contains the mapper and reducer defined by the
 user. Client asks the name node to get the number of blocks with their offsets & locations, and calculate the metadata of
